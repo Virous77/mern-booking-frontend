@@ -1,11 +1,12 @@
-import React from "react";
 import Navbar from "./components/layout/Navbar";
+import AppRouter from "./router/AppRouter";
 
 const App = () => {
   return (
-    <div>
+    <main>
       <Navbar />
-    </div>
+      <AppRouter />
+    </main>
   );
 };
 

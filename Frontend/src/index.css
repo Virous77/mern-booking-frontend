@@ -13,13 +13,19 @@
   --body-color: hsl(106, 16%, 27%);
   --box-shadow: 2px 3px 8px rgba(157, 192, 139, 0.3);
   --opposite-color: hsl(69, 49%, 89%);
+  --sub-color: hsl(66, 97%, 46%);
+  --primary-font-size: 1.8rem;
+  --secondary-font-size: 1.2rem;
+  --primary-pSize: 16px;
+  --secondary-pSize: 13px;
 }
 
 .darkTheme {
-  --main-font-color: hsl(106, 16%, 27%);
+  --main-font-color: hsl(107, 5%, 35%);
   --body-color: hsl(69, 49%, 89%);
   --box-shadow: 2px 3px 8px rgba(157, 192, 139, 0.3);
   --opposite-color: hsl(106, 16%, 27%);
+  --sub-color: hsl(0, 0%, 3%);
 }
 
 body {
@@ -45,4 +51,9 @@ input {
 button {
   border: none;
   cursor: pointer;
+}
+
+img {
+  display: block;
+  width: 100%;
 }

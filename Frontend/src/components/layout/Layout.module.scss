@@ -44,6 +44,14 @@
   display: none;
 }
 
+@media (max-width: 820px) {
+  .nav {
+    .nav-wrap {
+      padding: 0;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .nav-mobile-menu {
     @include displayFlex;
@@ -57,7 +65,6 @@
   .nav {
     .nav-wrap {
       max-width: 100%;
-      padding: 0;
     }
   }
 }

@@ -32,7 +32,7 @@ const Theme = () => {
     >
       {theme === "Light" ? (
         <MdDarkMode
-          size={20}
+          size={21}
           cursor="pointer"
           color={"var(--main-font-color)"}
         />

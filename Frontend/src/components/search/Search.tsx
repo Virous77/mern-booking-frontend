@@ -11,15 +11,11 @@ const Search: React.FC<Search> = ({ search, setSearch }) => {
   const [show, setShow] = useState(false);
   const body = document.querySelector("body");
 
-  body?.addEventListener("click", () => {
-    setShow(false);
-  });
-
   return (
     <>
       {!show ? (
         <HiOutlineSearchCircle
-          size={20}
+          size={21}
           cursor="pointer"
           onClick={(e) => {
             e.stopPropagation();
@@ -35,6 +31,7 @@ const Search: React.FC<Search> = ({ search, setSearch }) => {
           onChange={(e) => setSearch(e.target.value)}
           className={styles.search}
           onClick={(e) => e.stopPropagation()}
+          onBlur={() => setShow(false)}
         />
       )}
     </>
