@@ -1,0 +1,41 @@
+@import "../common//variable.scss";
+
+.date-main {
+  position: absolute;
+  z-index: 1000;
+  left: 57.5%;
+  top: 35.8%;
+  transform: translate(-50%, -50%);
+}
+
+.search-main {
+  background-color: var(--opposite-color);
+  width: 700px;
+  border-radius: 15px;
+  @include displayFlex;
+  justify-content: space-between;
+}
+
+.search-button {
+  background-color: var(--sub-color);
+  color: var(--primary-font-color);
+  color: white;
+  padding: 15px 30px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: var(--primary-pSize);
+}
+
+.today {
+  @include displayFlex;
+  gap: 1rem;
+
+  p {
+    color: red;
+    border: 1px solid black;
+    padding: 7px 35px;
+    opacity: 0.4;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+}

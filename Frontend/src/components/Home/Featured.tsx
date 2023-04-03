@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { fetchData } from "../../api/api";
 import { HotelType } from "../../types/type";
@@ -6,6 +6,9 @@ import styles from "./Home.module.scss";
 import { AiFillStar } from "react-icons/ai";
 
 const Featured = () => {
+  const localCurrency = localStorage.getItem("currency");
+  const currency: string = localCurrency ? JSON.parse(localCurrency) : "";
+
   const { data } = useQuery(
     ["featured"],
     (): Promise<HotelType[]> => fetchData("/hotel?featured=true&limit=10")
@@ -27,7 +30,14 @@ const Featured = () => {
               />
               <h3>{hotel.name}</h3>
               <p>{hotel.address}</p>
-              <span>Starting from ₹{hotel.cheapestPrice}</span>
+              <span>
+                Starting from
+                <p>
+                  {currency === "usd"
+                    ? `$${(hotel.cheapestPrice / 85)?.toFixed(2)}`
+                    : `₹${hotel.cheapestPrice}`}
+                </p>
+              </span>
               {hotel.rating && (
                 <b>
                   {hotel.rating} <AiFillStar color="red" size={18} />

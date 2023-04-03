@@ -201,9 +201,16 @@
   }
 
   span {
-    display: inline-block;
     color: var(--body-color);
     padding-left: 5px;
+    @include displayFlex;
+
+    p {
+      align-self: center;
+      margin-bottom: 0px;
+      font-family: serif;
+      font-size: var(--primary-pSize);
+    }
   }
 
   b {

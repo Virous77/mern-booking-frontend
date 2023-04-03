@@ -68,3 +68,35 @@
     }
   }
 }
+
+//Footer
+
+.footer-main {
+  background-color: var(--opposite-color);
+  padding: 1rem 3rem;
+  @include displayFlex;
+  justify-content: space-between;
+
+  p {
+    color: var(--body-color);
+    font-size: var(--secondary-pSize);
+  }
+}
+
+.socials {
+  @include displayFlex;
+  gap: 1rem;
+}
+
+//currency
+.currency {
+  margin-left: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: serif;
+  text-transform: uppercase;
+}
+
+.currency:hover {
+  opacity: 0.8;
+}
