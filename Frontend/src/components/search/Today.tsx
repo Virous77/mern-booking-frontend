@@ -1,18 +1,16 @@
 import React from "react";
 import styles from "./MainComponent.module.scss";
+import { useGlobalContext } from "../../context/useGlobal";
 
-type TodayProps = {
-  handleCalander: () => void;
-};
-
-const Today: React.FC<TodayProps> = ({ handleCalander }) => {
+const Today = () => {
   const date = new Date();
+  const value = useGlobalContext();
 
   return (
     <div
       className={styles["today"]}
       onClick={(e) => {
-        handleCalander();
+        value?.setShowCalander(true);
         e.stopPropagation();
       }}
     >

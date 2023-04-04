@@ -1,20 +1,17 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import styles from "./Search.module.scss";
+import { useGlobalContext } from "../../context/useGlobal";
 
-type Search = {
-  search: string;
-  setSearch: Dispatch<SetStateAction<string>>;
-};
+const Search = () => {
+  const value = useGlobalContext();
 
-const Search: React.FC<Search> = ({ search, setSearch }) => {
   return (
     <>
       <input
+        ref={value?.searchRef}
         type="text"
         placeholder="Search Properties...."
-        onChange={(e) => setSearch(e.target.value)}
         className={styles.search}
-        value={search}
       />
     </>
   );

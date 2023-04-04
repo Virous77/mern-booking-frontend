@@ -100,3 +100,23 @@
 .currency:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 820px) {
+  .footer-main {
+    padding: 1rem;
+  }
+}
+
+.show-it {
+  display: none;
+}
+
+@media (max-width: 940px) {
+  .hide-it {
+    display: none;
+  }
+
+  .show-it {
+    display: block;
+  }
+}

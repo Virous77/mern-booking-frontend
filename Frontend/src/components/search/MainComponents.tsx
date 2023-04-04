@@ -1,39 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./MainComponent.module.scss";
 import Search from "./Search";
 import DateRangeApp from "../DateRange/DateRange";
 import SearchButton from "./SearchButton";
 import Today from "./Today";
+import { useGlobalContext } from "../../context/useGlobal";
 
-const MainComponents = () => {
-  const [showCalander, setShowCalander] = useState(false);
-  const [dates, setDates] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-  const [serach, setSearch] = useState("");
-
-  const handleDates = (item: any) => {
-    setDates([item.selection]);
-  };
+const MainComponents = React.memo(() => {
+  const value = useGlobalContext();
 
   const body = document.querySelector("body");
-
   body?.addEventListener("click", () => {
-    setShowCalander(false);
+    value?.setShowCalander(false);
   });
 
   return (
     <div className={styles["search-main"]} onClick={(e) => e.stopPropagation()}>
-      <Search search={serach} setSearch={setSearch} />
-      {showCalander && <DateRangeApp dates={dates} handleDates={handleDates} />}
-      <Today handleCalander={() => setShowCalander(true)} />
-      <SearchButton />
+      <Search />
+      {value?.showCalander && (
+        <div className={styles["hide-it"]}>
+          <DateRangeApp />
+        </div>
+      )}
+      <Today />
+      <SearchButton handleSearch={value?.handleSearch} />
     </div>
   );
-};
+});
 
 export default MainComponents;

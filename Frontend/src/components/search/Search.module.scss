@@ -4,4 +4,11 @@
   padding: 13px 10px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  padding-left: 17px;
+}
+
+@media (max-width: 1120px) {
+  .search {
+    font-size: 14px;
+  }
 }

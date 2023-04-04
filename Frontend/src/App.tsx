@@ -1,12 +1,22 @@
 import Navbar from "./components/layout/Navbar";
 import AppRouter from "./router/AppRouter";
 import Footer from "./components/layout/Footer";
+import { useGlobalContext } from "./context/useGlobal";
+import { useLocation } from "react-router-dom";
 
 const App = () => {
+  const value = useGlobalContext();
+  const { pathname } = useLocation();
+
+  console.log("cool");
+
   return (
     <>
+      {pathname === "/" && (
+        <>{value?.showCalander && <div className="cool"></div>}</>
+      )}
+
       <Navbar />
-      {/* <div className="cool"></div> */}
       <AppRouter />
       <Footer />
     </>
