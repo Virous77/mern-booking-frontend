@@ -19,7 +19,7 @@ const MainComponents = React.memo(() => {
       <Search />
       {value?.showCalander && (
         <div className={styles["hide-it"]}>
-          <DateRangeApp />
+          <DateRangeApp style={styles["date-main"]} />
         </div>
       )}
       <Today />
