@@ -53,12 +53,12 @@ const BookingUserData: React.FC<BookingUserDataProps & MoreType> = ({
       <div className={styles["people-count"]}>
         <fieldset onClick={() => setShow("people")}>
           <span>Adult</span>
-          <p>6</p>
+          <p>{peopleData.adult}</p>
         </fieldset>
 
         <fieldset onClick={() => setShow("people")}>
           <span>Children</span>
-          <p>6</p>
+          <p>{peopleData.children}</p>
         </fieldset>
         {show === "people" && (
           <PeopleCount
@@ -70,7 +70,7 @@ const BookingUserData: React.FC<BookingUserDataProps & MoreType> = ({
 
         <fieldset onClick={() => setShow("people")}>
           <span>Room</span>
-          <p>1</p>
+          <p>{peopleData.room}</p>
         </fieldset>
       </div>
     </div>

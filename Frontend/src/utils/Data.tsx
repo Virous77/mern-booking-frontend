@@ -26,3 +26,36 @@ export const homeHeroImage: HeroImage[] = [
     link: imageThree,
   },
 ];
+
+export const month = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+export const formatDate = (id: Date | undefined) => {
+  const currentMonth = id?.getMonth();
+  const currentDat = id?.getDate();
+
+  const date =
+    month[Number(currentMonth)] + " " + currentDat + ", " + id?.getFullYear();
+
+  return date;
+};
+
+export const tomorrowTimestamp = new Date().getTime() + 24 * 60 * 60 * 1000;
+
+export const getLocalData = (name: string) => {
+  const data = localStorage.getItem(name);
+
+  return data ? JSON.parse(data) : "";
+};

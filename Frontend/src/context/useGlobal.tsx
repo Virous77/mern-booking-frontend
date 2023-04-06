@@ -16,7 +16,7 @@ type GlobalContextType = {
   handleSearch: () => void;
   handleDates: (item: any) => void;
   dates: any;
-  searchRef: React.MutableRefObject<undefined>;
+  searchRef: React.RefObject<HTMLInputElement>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -35,7 +35,7 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
   ]);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const searchRef = useRef();
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const handleDates = (item: any) => {
     setDates([item.selection]);

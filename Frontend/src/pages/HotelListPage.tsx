@@ -1,7 +1,8 @@
 import React from "react";
+import Hotel from "../components/hotelList/Hotel";
 
 const HotelPage = () => {
-  return <div>HotelPage</div>;
+  return <Hotel />;
 };
 
 export default HotelPage;

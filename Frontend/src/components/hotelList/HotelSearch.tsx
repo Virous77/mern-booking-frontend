@@ -3,21 +3,38 @@ import styles from "./Hotel.module.scss";
 import DateRangeApp from "../DateRange/DateRange";
 import BookingUserData from "./BookingUserData";
 import Button from "../common/Button";
+import { useGlobalContext } from "../../context/useGlobal";
+import { formatDate } from "../../utils/Data";
 
-export type peopleDataType = {
-  adult: string;
-  children: string;
-  room: string;
+import { peopleDataType } from "./Hotel";
+
+type HotelSearchProps = {
+  price: {
+    maxPrice: string;
+    minPrice: string;
+  };
+  peopleData: peopleDataType;
+  searchRef: React.RefObject<HTMLInputElement>;
+  setPeopleData: React.Dispatch<React.SetStateAction<peopleDataType>>;
+  handleSearch: () => void;
+  setPrice: React.Dispatch<
+    React.SetStateAction<{
+      maxPrice: string;
+      minPrice: string;
+    }>
+  >;
 };
 
-const HotelSearch = () => {
+const HotelSearch: React.FC<HotelSearchProps> = ({
+  price,
+  peopleData,
+  searchRef,
+  setPrice,
+  setPeopleData,
+  handleSearch,
+}) => {
   const [showDate, setShowDate] = useState(false);
-  const [price, setPrice] = useState({ maxPrice: "1000", minPrice: "100" });
-  const [peopleData, setPeopleData] = useState<peopleDataType>({
-    adult: "1",
-    children: "0",
-    room: "1",
-  });
+  const value = useGlobalContext();
 
   const body = document.querySelector("body");
   body?.addEventListener("click", () => {
@@ -30,7 +47,12 @@ const HotelSearch = () => {
         <h2>Search</h2>
         <div className={styles["hotel-aside-search"]}>
           <label>Destination</label>
-          <input type="text" placeholder="Search Destination.." />
+          <input
+            type="text"
+            placeholder="Search Destination.."
+            ref={searchRef}
+            value={value?.searchRef.current?.value}
+          />
         </div>
 
         <div className={styles["hotel-aside-date"]}>
@@ -41,7 +63,8 @@ const HotelSearch = () => {
               setShowDate(!showDate);
             }}
           >
-            05/05/2022 to 04/08/2022
+            {formatDate(new Date(value?.dates[0].startDate))}---
+            {formatDate(new Date(value?.dates[0].endDate))}
           </b>
           {showDate && <DateRangeApp style={styles["hotel-aside-pick"]} />}
         </div>
@@ -54,7 +77,7 @@ const HotelSearch = () => {
         <Button
           className={styles["hotel-aside-button"]}
           buttonName="Search"
-          onClick={() => console.log("clicked")}
+          onClick={handleSearch}
         />
       </div>
     </aside>

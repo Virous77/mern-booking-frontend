@@ -8,8 +8,6 @@ const App = () => {
   const value = useGlobalContext();
   const { pathname } = useLocation();
 
-  console.log("cool");
-
   return (
     <>
       {pathname === "/" && (
