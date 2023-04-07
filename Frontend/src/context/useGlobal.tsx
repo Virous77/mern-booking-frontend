@@ -17,6 +17,8 @@ type GlobalContextType = {
   handleDates: (item: any) => void;
   dates: any;
   searchRef: React.RefObject<HTMLInputElement>;
+  fetch: boolean;
+  setFetch: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -33,6 +35,8 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
       key: "selection",
     },
   ]);
+  const [fetch, setFetch] = useState(false);
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const searchRef = useRef<HTMLInputElement>(null);
@@ -62,6 +66,8 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
     handleDates,
     dates,
     searchRef,
+    fetch,
+    setFetch,
   };
 
   //Body

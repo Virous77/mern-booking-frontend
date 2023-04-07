@@ -1,10 +1,21 @@
-.search {
+@import "../common/variable.scss";
+
+.search-body {
+  @include displayFlex;
+  align-items: flex-start;
   background-color: var(--opposite-color);
-  color: var(--body-color);
-  padding: 13px 10px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  padding-left: 17px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  padding-right: 0;
+}
+
+.mobile-button {
+  width: 150px;
+  background-color: blueviolet;
+  height: 39.3px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: var(--opposite-color);
 }
 
 @media (max-width: 1120px) {

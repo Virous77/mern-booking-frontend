@@ -16,14 +16,14 @@ const MainComponents = React.memo(() => {
 
   return (
     <div className={styles["search-main"]} onClick={(e) => e.stopPropagation()}>
-      <Search />
+      <Search classname={styles.search} />
       {value?.showCalander && (
         <div className={styles["hide-it"]}>
           <DateRangeApp style={styles["date-main"]} />
         </div>
       )}
       <Today />
-      <SearchButton handleSearch={value?.handleSearch} />
+      <SearchButton />
     </div>
   );
 });

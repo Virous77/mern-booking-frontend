@@ -6,6 +6,7 @@ import styles from "./Hotel.module.scss";
 import { useQuery } from "react-query";
 import { fetchData } from "../../api/api";
 import { HotelType } from "../../types/type";
+import Search from "../search/Search";
 
 export type peopleDataType = {
   adult: number;
@@ -21,7 +22,6 @@ const Hotel = () => {
     room: 1,
   });
   const searchRef = useRef<HTMLInputElement>(null);
-  const [t, setT] = useState(false);
   const value = useGlobalContext();
 
   const { data, isLoading, error } = useQuery(
@@ -31,14 +31,14 @@ const Hotel = () => {
         `/hotel?city=${searchRef.current?.value}&min=${price.minPrice}&max=${price.maxPrice}`
       ),
     {
-      enabled: t,
+      enabled: value?.fetch,
     }
   );
 
   const handleSearch = () => {
-    setT(true);
+    value?.setFetch(true);
     setTimeout(() => {
-      setT(false);
+      value?.setFetch(false);
     }, 1000);
   };
 
@@ -56,6 +56,10 @@ const Hotel = () => {
           />
         </section>
         <section className={styles["hotel-list"]}>
+          <div className={styles["show-mobile"]}>
+            <Search classname={styles["mobile-search"]} name="mobile" />
+          </div>
+
           <HotelList hotels={data} />
         </section>
       </div>

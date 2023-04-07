@@ -1,5 +1,14 @@
 @import "../common//variable.scss";
 
+.search {
+  background-color: var(--opposite-color);
+  color: var(--body-color);
+  padding: 13px 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding-left: 17px;
+}
+
 .date-main {
   position: absolute;
   z-index: 1000;
