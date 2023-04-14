@@ -1,8 +1,8 @@
 import React from "react";
 
 type ButtonProps = {
-  buttonName: string;
-  className: string;
+  buttonName: string | any;
+  className?: string;
   onClick: () => void;
   loading?: boolean;
 };

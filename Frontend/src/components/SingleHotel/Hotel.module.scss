@@ -1,0 +1,17 @@
+.hotel-main {
+  padding: 1rem;
+
+  section {
+    max-width: 1250px;
+    margin: auto;
+  }
+}
+
+.modal {
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
