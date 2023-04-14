@@ -14,7 +14,8 @@ const Search: React.FC<SearchProps> = ({ classname, name }) => {
   return (
     <div className={name === "mobile" ? styles["search-body"] : ""}>
       <input
-        ref={value?.searchRef}
+        value={value?.search}
+        onChange={(e) => value?.setSearch(e.target.value)}
         type="text"
         placeholder="Search Properties...."
         className={classname}

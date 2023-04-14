@@ -21,14 +21,15 @@ const Hotel = () => {
     children: 0,
     room: 1,
   });
-  const searchRef = useRef<HTMLInputElement>(null);
   const value = useGlobalContext();
 
   const { data, isLoading, error } = useQuery(
     ["get-hotel"],
     async (): Promise<HotelType[]> =>
       fetchData(
-        `/hotel?city=${searchRef.current?.value}&min=${price.minPrice}&max=${price.maxPrice}`
+        `/hotel?city=${value?.search || "Mumbai"}&min=${price.minPrice}&max=${
+          price.maxPrice
+        }`
       ),
     {
       enabled: value?.fetch,
@@ -49,7 +50,6 @@ const Hotel = () => {
           <HotelSearch
             peopleData={peopleData}
             price={price}
-            searchRef={searchRef}
             setPeopleData={setPeopleData}
             handleSearch={handleSearch}
             setPrice={setPrice}

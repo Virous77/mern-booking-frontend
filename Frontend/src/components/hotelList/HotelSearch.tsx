@@ -5,7 +5,6 @@ import BookingUserData from "./BookingUserData";
 import Button from "../common/Button";
 import { useGlobalContext } from "../../context/useGlobal";
 import { formatDate } from "../../utils/Data";
-
 import { peopleDataType } from "./Hotel";
 
 type HotelSearchProps = {
@@ -14,7 +13,6 @@ type HotelSearchProps = {
     minPrice: string;
   };
   peopleData: peopleDataType;
-  searchRef: React.RefObject<HTMLInputElement>;
   setPeopleData: React.Dispatch<React.SetStateAction<peopleDataType>>;
   handleSearch: () => void;
   setPrice: React.Dispatch<
@@ -28,7 +26,6 @@ type HotelSearchProps = {
 const HotelSearch: React.FC<HotelSearchProps> = ({
   price,
   peopleData,
-  searchRef,
   setPrice,
   setPeopleData,
   handleSearch,
@@ -50,8 +47,8 @@ const HotelSearch: React.FC<HotelSearchProps> = ({
           <input
             type="text"
             placeholder="Search Destination.."
-            ref={searchRef}
-            value={value?.searchRef.current?.value}
+            value={value?.search}
+            onChange={(e) => value?.setSearch(e.target.value)}
           />
         </div>
 

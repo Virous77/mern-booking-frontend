@@ -16,9 +16,10 @@ type GlobalContextType = {
   handleSearch: () => void;
   handleDates: (item: any) => void;
   dates: any;
-  searchRef: React.RefObject<HTMLInputElement>;
   fetch: boolean;
   setFetch: React.Dispatch<React.SetStateAction<boolean>>;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -36,6 +37,7 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
     },
   ]);
   const [fetch, setFetch] = useState(false);
+  const [search, setSearch] = useState("");
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -53,7 +55,8 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
       search: searchRef?.current?.value,
     };
 
-    value?.setQueryData(data);
+    setQueryData(data);
+    setFetch(true);
     navigate("/hotel");
   };
 
@@ -65,8 +68,9 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
     handleSearch,
     handleDates,
     dates,
-    searchRef,
     fetch,
+    search,
+    setSearch,
     setFetch,
   };
 

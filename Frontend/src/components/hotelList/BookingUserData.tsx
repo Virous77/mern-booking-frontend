@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Hotel.module.scss";
 import Price from "./Price";
 import PeopleCount from "./PeopleCount";
-import { peopleDataType } from "./HotelSearch";
+import { peopleDataType } from "./Hotel";
 
 export type BookingUserDataProps = {
   price: { maxPrice: string; minPrice: string };
