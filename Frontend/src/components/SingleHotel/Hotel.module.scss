@@ -1,12 +1,14 @@
 @import "../common//variable.scss";
 
 .hotel-main {
-  padding: 1rem;
   margin-top: 1rem;
 
   section {
     max-width: 1250px;
     margin: auto;
+    border: 1px solid var(--opposite-color);
+    padding: 1rem;
+    border-radius: 10px;
   }
 }
 

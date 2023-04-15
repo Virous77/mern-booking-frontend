@@ -30,3 +30,12 @@ export const fetchData = async (endPoints: string) => {
     return error;
   }
 };
+
+type propsType = {
+  endPoints: string;
+  userData: any;
+};
+
+export const postData = async ({ endPoints, userData }: propsType) => {
+  return axios.post(`${url}${endPoints}`, userData);
+};

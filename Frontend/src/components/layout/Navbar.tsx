@@ -5,7 +5,7 @@ import AuthLogo from "./AuthLogo";
 import { CgMenuRound } from "react-icons/cg";
 import MainComponents from "../search/MainComponents";
 import { HiOutlineSearchCircle } from "react-icons/hi";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Navbar = React.memo(() => {
   const [show, setShow] = useState(false);
@@ -70,7 +70,9 @@ const Navbar = React.memo(() => {
           )}
 
           <Theme />
-          <AuthLogo />
+          <Link to="/login">
+            <AuthLogo />
+          </Link>
         </div>
 
         <div className={styles["nav-mobile-menu"]}>

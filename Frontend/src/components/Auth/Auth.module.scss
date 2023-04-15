@@ -1,0 +1,96 @@
+@import "../common/variable.scss";
+
+.auth-main {
+  max-width: 700px;
+  height: 100vh;
+  @include displayFlex;
+  margin: auto;
+  justify-content: center;
+}
+
+.auth-login {
+  width: 100%;
+  height: fit-content;
+  padding: 2rem;
+  background-color: var(--opposite-color);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  @include displayFlex;
+  flex-direction: column;
+
+  h1 {
+    color: var(--body-color);
+  }
+
+  form {
+    margin-top: 2rem;
+    width: 100%;
+    @include flexColumn;
+    gap: 2rem;
+    position: relative;
+  }
+
+  fieldSet {
+    border: none;
+    @include flexColumn;
+    position: relative;
+  }
+
+  input {
+    padding: 6px 10px;
+    font-size: var(--primary-pSize);
+    border-radius: 10px;
+    background-color: var(--body-color);
+    color: var(--opposite-color);
+  }
+
+  label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  p,
+  span {
+    color: red;
+    font-size: var(--secondary-pSize);
+    margin-top: 3px;
+    position: absolute;
+  }
+
+  p {
+    bottom: -30%;
+    left: 1%;
+  }
+
+  span {
+    bottom: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  b {
+    color: var(--body-color);
+    display: block;
+    text-align: end;
+    margin-top: -22px;
+    font-size: var(--secondary-pSize);
+
+    a {
+      color: blue;
+    }
+  }
+}
+
+.auth-button {
+  padding: 8px;
+  font-size: var(--primary-pSize);
+  text-transform: uppercase;
+  background-color: var(--body-color);
+  color: var(--opposite-color);
+  border-radius: 5px;
+  margin-top: 1rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

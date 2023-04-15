@@ -54,3 +54,12 @@ export type GlobalContextType = {
   peopleData: peopleDataType;
   setPeopleData: React.Dispatch<React.SetStateAction<peopleDataType>>;
 };
+
+export type UserProperty = {
+  _id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  userName: string;
+  email: string;
+};
