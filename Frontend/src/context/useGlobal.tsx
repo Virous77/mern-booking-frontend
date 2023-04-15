@@ -1,26 +1,10 @@
 import React, { createContext, useContext, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-type QueryDataType = {
-  search?: string;
-  startDate?: string;
-  endDate?: string;
-  key?: string;
-};
-
-type GlobalContextType = {
-  queryData: QueryDataType | undefined;
-  setQueryData: React.Dispatch<React.SetStateAction<QueryDataType | undefined>>;
-  showCalander: boolean;
-  setShowCalander: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSearch: () => void;
-  handleDates: (item: any) => void;
-  dates: any;
-  fetch: boolean;
-  setFetch: React.Dispatch<React.SetStateAction<boolean>>;
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
-};
+import {
+  GlobalContextType,
+  QueryDataType,
+  peopleDataType,
+} from "../types/type";
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
 
@@ -38,6 +22,12 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
   ]);
   const [fetch, setFetch] = useState(false);
   const [search, setSearch] = useState("");
+  const [price, setPrice] = useState({ maxPrice: "1000", minPrice: "100" });
+  const [peopleData, setPeopleData] = useState<peopleDataType>({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -72,6 +62,10 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
     search,
     setSearch,
     setFetch,
+    peopleData,
+    setPeopleData,
+    price,
+    setPrice,
   };
 
   //Body
@@ -89,5 +83,4 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
 };
 
 export const useGlobalContext = () => useContext(GlobalContext);
-
 export default GlobalContext;

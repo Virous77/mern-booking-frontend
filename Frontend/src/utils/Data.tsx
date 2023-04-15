@@ -59,3 +59,9 @@ export const getLocalData = (name: string) => {
 
   return data ? JSON.parse(data) : "";
 };
+
+const MilliSecondsPerDay = 1000 * 60 * 60 * 24;
+export const bookingCounts = (date1: Date, date2: Date) => {
+  const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
+  return Math.ceil(timeDiff / MilliSecondsPerDay);
+};

@@ -5,31 +5,13 @@ import BookingUserData from "./BookingUserData";
 import Button from "../common/Button";
 import { useGlobalContext } from "../../context/useGlobal";
 import { formatDate } from "../../utils/Data";
-import { peopleDataType } from "./Hotel";
+import { peopleDataType } from "../../types/type";
 
 type HotelSearchProps = {
-  price: {
-    maxPrice: string;
-    minPrice: string;
-  };
-  peopleData: peopleDataType;
-  setPeopleData: React.Dispatch<React.SetStateAction<peopleDataType>>;
   handleSearch: () => void;
-  setPrice: React.Dispatch<
-    React.SetStateAction<{
-      maxPrice: string;
-      minPrice: string;
-    }>
-  >;
 };
 
-const HotelSearch: React.FC<HotelSearchProps> = ({
-  price,
-  peopleData,
-  setPrice,
-  setPeopleData,
-  handleSearch,
-}) => {
+const HotelSearch: React.FC<HotelSearchProps> = ({ handleSearch }) => {
   const [showDate, setShowDate] = useState(false);
   const value = useGlobalContext();
 
@@ -65,12 +47,7 @@ const HotelSearch: React.FC<HotelSearchProps> = ({
           </b>
           {showDate && <DateRangeApp style={styles["hotel-aside-pick"]} />}
         </div>
-        <BookingUserData
-          price={price}
-          setPrice={setPrice}
-          peopleData={peopleData}
-          setPeopleData={setPeopleData}
-        />
+        <BookingUserData />
         <Button
           className={styles["hotel-aside-button"]}
           buttonName="Search"

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styles from "./Hotel.module.scss";
 import Price from "./Price";
 import PeopleCount from "./PeopleCount";
-import { peopleDataType } from "./Hotel";
+import { peopleDataType } from "../../types/type";
+import { useGlobalContext } from "../../context/useGlobal";
 
 export type BookingUserDataProps = {
-  price: { maxPrice: string; minPrice: string };
   setPrice: React.Dispatch<
     React.SetStateAction<{
       maxPrice: string;
@@ -19,12 +19,8 @@ export type MoreType = {
   setPeopleData: React.Dispatch<React.SetStateAction<peopleDataType>>;
 };
 
-const BookingUserData: React.FC<BookingUserDataProps & MoreType> = ({
-  price,
-  setPrice,
-  peopleData,
-  setPeopleData,
-}) => {
+const BookingUserData: React.FC<BookingUserDataProps & MoreType> = ({}) => {
+  const value = useGlobalContext();
   const [show, setShow] = useState("");
 
   return (
@@ -34,43 +30,30 @@ const BookingUserData: React.FC<BookingUserDataProps & MoreType> = ({
       <div className={styles["wrap-price"]}>
         <fieldset onClick={() => setShow("price")}>
           <span>Min Price per Night</span>
-          <p>{price.minPrice}</p>
+          <p>{value?.price.minPrice}</p>
         </fieldset>
-        {show === "price" && (
-          <Price
-            show={show}
-            setShow={setShow}
-            price={price}
-            setPrice={setPrice}
-          />
-        )}
+        {show === "price" && <Price show={show} setShow={setShow} />}
         <fieldset onClick={() => setShow("price")}>
           <span>Max Price per Night</span>
-          <p>{price.maxPrice}</p>
+          <p>{value?.price.maxPrice}</p>
         </fieldset>
       </div>
 
       <div className={styles["people-count"]}>
         <fieldset onClick={() => setShow("people")}>
           <span>Adult</span>
-          <p>{peopleData.adult}</p>
+          <p>{value?.peopleData.adult}</p>
         </fieldset>
 
         <fieldset onClick={() => setShow("people")}>
           <span>Children</span>
-          <p>{peopleData.children}</p>
+          <p>{value?.peopleData.children}</p>
         </fieldset>
-        {show === "people" && (
-          <PeopleCount
-            setShow={setShow}
-            peopleData={peopleData}
-            setPeopleData={setPeopleData}
-          />
-        )}
+        {show === "people" && <PeopleCount setShow={setShow} />}
 
         <fieldset onClick={() => setShow("people")}>
           <span>Room</span>
-          <p>{peopleData.room}</p>
+          <p>{value?.peopleData.room}</p>
         </fieldset>
       </div>
     </div>

@@ -2,18 +2,15 @@ import React from "react";
 import styles from "./Hotel.module.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import Button from "../common/Button";
-import { BookingUserDataProps } from "./BookingUserData";
+import { useGlobalContext } from "../../context/useGlobal";
 
 type PriceProps = {
   show: string;
   setShow: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Price: React.FC<PriceProps & BookingUserDataProps> = ({
-  setShow,
-  price,
-  setPrice,
-}) => {
+const Price: React.FC<PriceProps> = ({ setShow, show }) => {
+  const value = useGlobalContext();
   return (
     <div className={styles["price-main"]}>
       <div className={styles["price-head"]}>
@@ -31,8 +28,10 @@ const Price: React.FC<PriceProps & BookingUserDataProps> = ({
           <h1>Min Price</h1>
           <input
             type="number"
-            value={price.minPrice || ""}
-            onChange={(e) => setPrice({ ...price, minPrice: e.target.value })}
+            value={value?.price.minPrice || ""}
+            onChange={(e) =>
+              value?.setPrice({ ...value?.price, minPrice: e.target.value })
+            }
           />
         </fieldset>
 
@@ -40,8 +39,10 @@ const Price: React.FC<PriceProps & BookingUserDataProps> = ({
           <h1>Max Price</h1>
           <input
             type="number"
-            value={price.maxPrice || ""}
-            onChange={(e) => setPrice({ ...price, maxPrice: e.target.value })}
+            value={value?.price.maxPrice || ""}
+            onChange={(e) =>
+              value?.setPrice({ ...value?.price, maxPrice: e.target.value })
+            }
           />
         </fieldset>
 

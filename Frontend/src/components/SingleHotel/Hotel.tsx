@@ -5,6 +5,9 @@ import { fetchData } from "../../api/api";
 import { HotelType } from "../../types/type";
 import Head from "./Head";
 import styles from "./Hotel.module.scss";
+import HotelGallery from "./HotelGallery";
+import HotelDetails from "./HotelDetails";
+import { getLocalData } from "../../utils/Data";
 
 const Hotel = () => {
   const { id } = useParams();
@@ -22,6 +25,8 @@ const Hotel = () => {
     <main className={styles["hotel-main"]}>
       <section>
         <Head data={data} />
+        <HotelGallery images={data?.photos} />
+        <HotelDetails data={data} />
       </section>
     </main>
   );

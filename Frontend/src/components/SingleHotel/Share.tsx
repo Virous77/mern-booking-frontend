@@ -11,7 +11,10 @@ const Share: React.FC<ShareProps> = ({ close }) => {
     <div>
       <header>
         <h3>Share</h3>
-        <Button buttonName={<AiOutlineClose />} onClick={close} />
+        <Button
+          buttonName={<AiOutlineClose color={`var(--main-font-color)`} />}
+          onClick={close}
+        />
       </header>
     </div>
   );

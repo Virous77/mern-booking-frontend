@@ -1,5 +1,8 @@
+@import "../common//variable.scss";
+
 .hotel-main {
   padding: 1rem;
+  margin-top: 1rem;
 
   section {
     max-width: 1250px;
@@ -14,4 +17,141 @@
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.head-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.head-left {
+  h1 {
+    font-size: 23px;
+    text-transform: capitalize;
+  }
+
+  p {
+    margin-top: 6px;
+    font-size: var(--primary-pSize);
+    text-transform: capitalize;
+    @include displayFlex;
+    gap: 4px;
+  }
+
+  b {
+    @include displayFlex;
+    margin-left: 20px;
+    font-weight: 400;
+    gap: 3px;
+    background-color: var(--opposite-color);
+    color: var(--body-color);
+    font-size: var(--secondary-pSize);
+    padding: 1px 10px;
+    border-radius: 2px;
+  }
+
+  span {
+    font-size: var(--secondary-pSize);
+  }
+}
+
+.head-right {
+  @include displayFlex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.gallery-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+
+  img {
+    height: 250px;
+    width: 100%;
+  }
+
+  img:hover {
+    opacity: 0.9;
+  }
+}
+
+.right-top {
+  border-top-right-radius: 10px;
+}
+
+.right-bottom {
+  border-bottom-right-radius: 10px;
+}
+
+.left-top {
+  border-top-left-radius: 10px;
+}
+
+.left-bottom {
+  border-bottom-left-radius: 10px;
+}
+
+.details-main {
+  @include displayFlex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.details-right {
+  width: 350px;
+  align-self: center;
+  background-color: var(--opposite-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+
+  h4 {
+    color: var(--opposite-color);
+    text-align: center;
+    font-size: var(--primary-pSize);
+    background-color: var(--body-color);
+    border-radius: 2px;
+  }
+
+  p {
+    font-size: var(--secondary-pSize);
+    color: var(--body-color);
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+.details-button {
+  background-color: var(--body-color);
+  color: var(--opposite-color);
+  font-size: var(--secondary-pSize);
+  border: none;
+  padding: 8px 16px;
+  margin-top: 1rem;
+  border-radius: 5px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.total-sum {
+  @include displayFlex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 4px;
+
+  h1 {
+    color: var(--body-color);
+  }
+
+  span {
+    color: var(--body-color);
+  }
 }

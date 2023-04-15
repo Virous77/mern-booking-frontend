@@ -1,19 +1,16 @@
 import React from "react";
 import styles from "./Hotel.module.scss";
 import { AiOutlineClose } from "react-icons/ai";
-import { MoreType } from "./BookingUserData";
 import { HiMinusCircle, HiPlusCircle } from "react-icons/hi";
 import Button from "../common/Button";
+import { useGlobalContext } from "../../context/useGlobal";
 
 type PeopleProps = {
   setShow: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const PeopleCount: React.FC<PeopleProps & MoreType> = ({
-  setShow,
-  peopleData,
-  setPeopleData,
-}) => {
+const PeopleCount: React.FC<PeopleProps> = ({ setShow }) => {
+  const value = useGlobalContext();
   return (
     <div className={styles["people-main"]}>
       <div className={styles["price-head"]}>
@@ -36,18 +33,24 @@ const PeopleCount: React.FC<PeopleProps & MoreType> = ({
               color={"var(--main-font-color)"}
               cursor="pointer"
               onClick={() => {
-                if (peopleData.adult === 1) return;
-                setPeopleData({ ...peopleData, adult: peopleData.adult - 1 });
+                if (value?.peopleData.adult === 1) return;
+                value?.setPeopleData({
+                  ...value?.peopleData,
+                  adult: value?.peopleData.adult - 1,
+                });
               }}
             />
-            <p>{peopleData.adult}</p>
+            <p>{value?.peopleData.adult}</p>
 
             <HiPlusCircle
               size={16}
               color={"var(--main-font-color)"}
               cursor="pointer"
               onClick={() =>
-                setPeopleData({ ...peopleData, adult: peopleData.adult + 1 })
+                value?.setPeopleData({
+                  ...value?.peopleData,
+                  adult: value?.peopleData.adult + 1,
+                })
               }
             />
           </div>
@@ -62,23 +65,23 @@ const PeopleCount: React.FC<PeopleProps & MoreType> = ({
               color={"var(--main-font-color)"}
               cursor="pointer"
               onClick={() => {
-                if (peopleData.children === 0) return;
-                setPeopleData({
-                  ...peopleData,
-                  children: peopleData.children - 1,
+                if (value?.peopleData.children === 0) return;
+                value?.setPeopleData({
+                  ...value?.peopleData,
+                  children: value?.peopleData.children - 1,
                 });
               }}
             />
-            <p>{peopleData.children}</p>
+            <p>{value?.peopleData.children}</p>
 
             <HiPlusCircle
               size={16}
               color={"var(--main-font-color)"}
               cursor="pointer"
               onClick={() =>
-                setPeopleData({
-                  ...peopleData,
-                  children: peopleData.children + 1,
+                value?.setPeopleData({
+                  ...value?.peopleData,
+                  children: value?.peopleData.children + 1,
                 })
               }
             />
@@ -94,18 +97,24 @@ const PeopleCount: React.FC<PeopleProps & MoreType> = ({
               color={"var(--main-font-color)"}
               cursor="pointer"
               onClick={() => {
-                if (peopleData.room === 1) return;
-                setPeopleData({ ...peopleData, room: peopleData.room - 1 });
+                if (value?.peopleData.room === 1) return;
+                value?.setPeopleData({
+                  ...value?.peopleData,
+                  room: value?.peopleData.room - 1,
+                });
               }}
             />
-            <p>{peopleData.room}</p>
+            <p>{value?.peopleData.room}</p>
 
             <HiPlusCircle
               size={16}
               color={"var(--main-font-color)"}
               cursor="pointer"
               onClick={() =>
-                setPeopleData({ ...peopleData, room: peopleData.room + 1 })
+                value?.setPeopleData({
+                  ...value?.peopleData,
+                  room: value?.peopleData.room + 1,
+                })
               }
             />
           </div>
