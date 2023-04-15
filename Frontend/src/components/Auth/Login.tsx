@@ -9,6 +9,7 @@ import {
 import { useMutation } from "react-query";
 import { postData } from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
+import { setLocalData } from "../../utils/Data";
 
 const Login = () => {
   const [formDate, setFormData] = useState({
@@ -34,6 +35,7 @@ const Login = () => {
     },
     onSuccess: (data) => {
       handleUserData(data.data);
+      setLocalData(data?.data.token);
       navigate("/");
     },
   });

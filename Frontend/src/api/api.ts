@@ -27,7 +27,7 @@ export const fetchData = async (endPoints: string) => {
     const { data } = await axios.get(`${url}${endPoints}`);
     return data;
   } catch (error) {
-    return error;
+    throw error;
   }
 };
 
@@ -38,4 +38,8 @@ type propsType = {
 
 export const postData = async ({ endPoints, userData }: propsType) => {
   return axios.post(`${url}${endPoints}`, userData);
+};
+
+export const getStatus = async ({ endPoints, userData }: propsType) => {
+  return axios.post(`${url}${endPoints}`, { token: userData });
 };

@@ -56,7 +56,6 @@ export const tomorrowTimestamp = new Date().getTime() + 24 * 60 * 60 * 1000;
 
 export const getLocalData = (name: string) => {
   const data = localStorage.getItem(name);
-
   return data ? JSON.parse(data) : "";
 };
 
@@ -64,4 +63,8 @@ const MilliSecondsPerDay = 1000 * 60 * 60 * 24;
 export const bookingCounts = (date1: Date, date2: Date) => {
   const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
   return Math.ceil(timeDiff / MilliSecondsPerDay);
+};
+
+export const setLocalData = (token: string) => {
+  localStorage.setItem("token", JSON.stringify(token));
 };

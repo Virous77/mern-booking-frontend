@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Layout.module.scss";
 import Theme from "../Theme/Theme";
 import AuthLogo from "./AuthLogo";
@@ -6,33 +6,38 @@ import { CgMenuRound } from "react-icons/cg";
 import MainComponents from "../search/MainComponents";
 import { HiOutlineSearchCircle } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useMutation } from "react-query";
+import { getLocalData } from "../../utils/Data";
+import { getStatus } from "../../api/api";
+import { useAuthContext } from "../../context/authContext";
 
 const Navbar = React.memo(() => {
   const [show, setShow] = useState(false);
   const body = document.querySelector("body");
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { handleUserData } = useAuthContext() as stateType & methodType;
+
+  const { mutate } = useMutation(
+    ["userIn"],
+    (token) => getStatus({ endPoints: "/user", userData: token }),
+    {
+      onSuccess: (data) => {
+        handleUserData(data.data);
+      },
+    }
+  );
 
   body?.addEventListener("click", () => {
     setShow(false);
   });
 
-  // const [isScrolled, setIsScrolled] = useState(false);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const currentScrollPosition = window.pageYOffset;
-  //     if (currentScrollPosition > window.innerHeight * 0.1) {
-  //       setIsScrolled(true);
-  //     } else {
-  //       setIsScrolled(false);
-  //     }
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
-  // console.log(isScrolled);
+  useEffect(() => {
+    const token = getLocalData("token");
+    if (token) {
+      mutate(token);
+    }
+  }, []);
 
   return (
     <nav className={styles.nav}>
@@ -98,3 +103,20 @@ const Navbar = React.memo(() => {
 });
 
 export default Navbar;
+
+// const [isScrolled, setIsScrolled] = useState(false);
+
+// useEffect(() => {
+//   const handleScroll = () => {
+//     const currentScrollPosition = window.pageYOffset;
+//     if (currentScrollPosition > window.innerHeight * 0.1) {
+//       setIsScrolled(true);
+//     } else {
+//       setIsScrolled(false);
+//     }
+//   };
+//   window.addEventListener("scroll", handleScroll);
+//   return () => window.removeEventListener("scroll", handleScroll);
+// }, []);
+
+// console.log(isScrolled);
