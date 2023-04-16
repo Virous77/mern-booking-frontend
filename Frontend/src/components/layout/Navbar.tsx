@@ -10,6 +10,7 @@ import { useMutation } from "react-query";
 import { getLocalData } from "../../utils/Data";
 import { getStatus } from "../../api/api";
 import { useAuthContext } from "../../context/authContext";
+import { stateType, methodType } from "../../context/authContext";
 
 const Navbar = React.memo(() => {
   const [show, setShow] = useState(false);
@@ -75,9 +76,13 @@ const Navbar = React.memo(() => {
           )}
 
           <Theme />
-          <Link to="/login">
+          {!getLocalData("token") ? (
+            <Link to="/login">
+              <AuthLogo />
+            </Link>
+          ) : (
             <AuthLogo />
-          </Link>
+          )}
         </div>
 
         <div className={styles["nav-mobile-menu"]}>

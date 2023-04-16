@@ -28,6 +28,7 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
     children: 0,
     room: 1,
   });
+  const [booking, setBooking] = useState(false);
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -66,6 +67,8 @@ export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({
     setPeopleData,
     price,
     setPrice,
+    booking,
+    setBooking,
   };
 
   //Body

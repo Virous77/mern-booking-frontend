@@ -8,7 +8,7 @@ type ShareProps = {
 
 const Share: React.FC<ShareProps> = ({ close }) => {
   return (
-    <div>
+    <div onClick={(e) => e.stopPropagation()}>
       <header>
         <h3>Share</h3>
         <Button

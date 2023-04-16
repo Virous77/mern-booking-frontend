@@ -3,8 +3,6 @@ import { UserProperty } from "../types/type";
 
 export type stateType = {
   user: UserProperty | null;
-  isLoading: boolean;
-  isLoggedIn: boolean;
 };
 
 export type methodType = {
@@ -13,8 +11,6 @@ export type methodType = {
 
 const initialState = {
   user: null,
-  isLoading: false,
-  isLoggedIn: false,
 };
 
 const AuthContext = createContext<stateType | methodType>(initialState);

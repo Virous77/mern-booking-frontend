@@ -7,19 +7,19 @@ import Head from "./Head";
 import styles from "./Hotel.module.scss";
 import HotelGallery from "./HotelGallery";
 import HotelDetails from "./HotelDetails";
-import { getLocalData } from "../../utils/Data";
+import { useGlobalContext } from "../../context/useGlobal";
+import { Modal } from "../../Modal/Modal";
+import BookingModal from "../Booking/BookingModal";
 
 const Hotel = () => {
   const { id } = useParams();
+  const value = useGlobalContext();
 
-  const { data, isLoading } = useQuery(
-    ["sHotel"],
-    (): Promise<HotelType> | undefined => {
-      if (id) {
-        return fetchData(`/hotel/get/${id}`);
-      }
+  const { data } = useQuery(["sHotel"], (): Promise<HotelType> | undefined => {
+    if (id) {
+      return fetchData(`/hotel/get/${id}`);
     }
-  );
+  });
 
   return (
     <main className={styles["hotel-main"]}>
@@ -28,6 +28,16 @@ const Hotel = () => {
         <HotelGallery images={data?.photos} />
         <HotelDetails data={data} />
       </section>
+
+      {value?.booking && (
+        <Modal
+          isOpen="isOpen"
+          onClose={() => value.setBooking(false)}
+          style={styles["modal"]}
+        >
+          <BookingModal close={() => value.setBooking(false)} />
+        </Modal>
+      )}
     </main>
   );
 };

@@ -53,6 +53,8 @@ export type GlobalContextType = {
   >;
   peopleData: peopleDataType;
   setPeopleData: React.Dispatch<React.SetStateAction<peopleDataType>>;
+  booking: boolean;
+  setBooking: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type UserProperty = {
@@ -62,4 +64,21 @@ export type UserProperty = {
   updatedAt: string;
   userName: string;
   email: string;
+};
+
+export type RoomBookType = {
+  number: number;
+  unavailableDates: string[];
+  _id: string;
+};
+
+export type RoomType = {
+  _id: string;
+  title: string;
+  desc: string;
+  price: number;
+  maxPeople: number;
+  roomNumbers: RoomBookType[];
+  createdAt: string;
+  updatedAt: string;
 };

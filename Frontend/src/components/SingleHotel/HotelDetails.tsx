@@ -5,6 +5,7 @@ import styles from "./Hotel.module.scss";
 import Button from "../common/Button";
 import { useGlobalContext } from "../../context/useGlobal";
 import { bookingCounts } from "../../utils/Data";
+import { useNavigate } from "react-router-dom";
 
 type HotelDetailsType = {
   data: HotelType | undefined;
@@ -12,6 +13,7 @@ type HotelDetailsType = {
 
 const HotelDetails: React.FC<HotelDetailsType> = ({ data }) => {
   const value = useGlobalContext();
+  const navigate = useNavigate();
 
   const totalPrice =
     data &&
@@ -25,6 +27,14 @@ const HotelDetails: React.FC<HotelDetailsType> = ({ data }) => {
   );
 
   const moneyType = totalPrice ? totalPrice : data?.cheapestPrice;
+
+  const handleBooking = () => {
+    if (getLocalData("token")) {
+      value?.setBooking(true);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className={styles["details-main"]}>
@@ -60,7 +70,7 @@ const HotelDetails: React.FC<HotelDetailsType> = ({ data }) => {
         </div>
         <Button
           buttonName="Reserve a Book Now!"
-          onClick={() => {}}
+          onClick={handleBooking}
           className={styles["details-button"]}
         />
       </div>
